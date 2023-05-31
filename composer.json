@@ -3,7 +3,7 @@
     "description": "Testing app building for access QR system",
     "type": "project",
     "require": {
-        "chillerlan/php-qrcode"
+        "chillerlan/php-qrcode": "*"
     },
     "authors": [
         {
