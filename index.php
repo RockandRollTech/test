@@ -15,7 +15,7 @@ switch ($_POST['ui']) {
                   var mainLoopId = setInterval(function(){
                     var secret = secret + 1
                     var QRText = "https://signin.beep3.com?secret=" + secret.toString();
-                    qrcode.clear();
+                    document.getElementById("qrcode").innerHTML = "";
                     qrcode = new QRCode("qrcode",QRText);
                     }, 1000);
                 </script>';
