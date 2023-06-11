@@ -1,6 +1,6 @@
 <?php
 
-$html-header = '
+$htmlheader = '
 <!DOCTYPE html>
 <html lang="en">
  
@@ -27,11 +27,11 @@ $html-header = '
     </script>
 </head><body><center>';
 
-$html-footer = '</center></body></html>';
+$htmlfooter = '</center></body></html>';
 
 switch ($_POST['ui']) {
     default: //Kiosk Home - show QR code + button for checkin/checkout without mobile + button for "I don't have reception here"
-        echo $html-header;
+        echo $htmlheader;
         echo "UI kiosk home<br>";
         echo '<main>
               <div id="qrcode"></div>
@@ -41,7 +41,7 @@ switch ($_POST['ui']) {
                     var qrcode = new QRCode("qrcode",
                     "https://www.geeksforgeeks.org");
                 </script>';
-        echo $html-footer;
+        echo $htmlfooter;
     
         break;
         
