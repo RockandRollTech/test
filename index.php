@@ -20,7 +20,10 @@ switch ($_GET['ui']) {
     
     case 'report-home':
         echo "UI report home";
-
+        $myfile = fopen("newfile.txt", "r") or die("Unable to open file!");
+        $contents = fread($myfile, filesize("newfile.txt"));
+        fclose($handle);
+        echo $contents;
     break;
 }
 
