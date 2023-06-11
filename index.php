@@ -13,7 +13,7 @@ switch ($_POST['ui']) {
                 <script>
                     var qrcode = new QRCode("qrcode","https://signin.beep3.com?secret=1234");
                     await new Promise(resolve => setTimeout(resolve, 10000)); // 10 sec
-                    var qrcode = new QRCode("qrcode","https://signin.beep3.com?secret=1234");
+                    var qrcode = new QRCode("qrcode","https://signin.beep3.com?secret=5678");
                 </script>';
         echo $htmlfooter;
     
