@@ -9,7 +9,7 @@ $htmlheader = '
     <meta name="viewport"
          content="width=device-width,
                         initial-scale=1.0" />
-    <title>Check In or Check Out</title>
+    <title>signin.beep3.com</title>
     
     <style>
         h1, h3 {
