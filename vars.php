@@ -1,3 +1,5 @@
+<?php
+
 $htmlheader = '
 <!DOCTYPE html>
 <html lang="en">
@@ -26,3 +28,5 @@ $htmlheader = '
 </head><body><center>';
 
 $htmlfooter = '</center></body></html>';
+
+?>
