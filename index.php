@@ -13,7 +13,8 @@ switch ($_POST['ui']) {
                 <script>
                   var mainLoopId = setInterval(function(){
                     var secret = secret + 1
-                    var qrcode = new QRCode("qrcode","https://signin.beep3.com?secret="+secret.tostring());
+                    var QRText = "https://signin.beep3.com?secret=" + secret.toString();
+                    var qrcode = new QRCode("qrcode",QRText);
                     }, 1000);
                 </script>';
         echo $htmlfooter;
