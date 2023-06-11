@@ -5,14 +5,15 @@ include 'vars.php';
 switch ($_POST['ui']) {
     default: //Kiosk Home - show QR code + button for checkin/checkout without mobile + button for "I don't have reception here"
         echo $htmlheader;
-        echo "UI kiosk home<br>";
+        echo "Kiosk Home<br>";
         echo '<main>
               <div id="qrcode"></div>
               </main>
      
                 <script>
-                    var qrcode = new QRCode("qrcode",
-                    "https://www.geeksforgeeks.org");
+                    var qrcode = new QRCode("qrcode","https://signin.beep3.com?secret=1234");
+                    await new Promise(resolve => setTimeout(resolve, 10000)); // 10 sec
+                    var qrcode = new QRCode("qrcode","https://signin.beep3.com?secret=1234");
                 </script>';
         echo $htmlfooter;
     
