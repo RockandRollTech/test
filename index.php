@@ -19,12 +19,12 @@ switch ($_POST['ui']) {
                     QRText = "https://signin.beep3.com?secret=" + secret.toString();
                     document.getElementById("qrcode").innerHTML = "";
                     qrcode = new QRCode("qrcode",QRText);
-                    }, 1000);
+                    }, 10000);
                 </script>
                 
                 <form action="/index.php" method="post">
-                    <input name="ui" type="submit" value="kiosk-wifi-QR">
-                    <input name="ui" type="submit" value="kiosk-form">
+                    <input name="ui" type="submit" id="kiosk-wifi-QR" value="I have no phone reception">
+                    <input name="ui" type="submit" id="kiosk-form" value="I have no mobile device">
                 </form> 
                 
                 ';
