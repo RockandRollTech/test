@@ -23,8 +23,8 @@ switch ($_POST['ui']) {
                 </script>
                 
                 <form action="/index.php" method="post">
-                    <input name="ui" type="submit" id="kiosk-wifi-QR" value="I have no phone reception">
-                    <input name="ui" type="submit" id="kiosk-form" value="I have no mobile device">
+                    <button type="submit" name="ui" value="kiosk-wifi-QR">I have no phone reception</button>
+                    <button type="submit" name="ui" value="kiosk-form">I have no mobile device</button>
                 </form> 
                 
                 ';
