@@ -36,8 +36,22 @@ switch ($_POST['ui']) {
         break;
         
     case 'kiosk-wifi-QR':
-        echo "UI kiosk checkout";
-        //show QR code for kiosk WiFi
+        echo "UI kiosk WiFi";
+        echo '<main>
+              <div id="qrcode"></div>
+              </main>
+     
+                <script>
+                  var QRText = "WIFI:T:WPA;S:MyNetworkName;P:ThisIsMyPassword;H;";
+                  var qrcode = new QRCode("qrcode",QRText);
+                </script>
+                
+                <form action="/index.php" method="post">
+                    <input name="ui" type="submit" value="Back">
+                </form> 
+                
+                ';
+
     
         break;        
         
