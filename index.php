@@ -29,6 +29,7 @@ switch ($_POST['ui']) {
                 
                 ';
 
+        print_r($_POST);
         
         echo $htmlfooter;
     
