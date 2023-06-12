@@ -20,14 +20,17 @@ switch ($_POST['ui']) {
                     document.getElementById("qrcode").innerHTML = "";
                     qrcode = new QRCode("qrcode",QRText);
                     }, 1000);
-                </script>';
-        echo $htmlfooter;
-    
-        break;
+                </script>
+                
+                <form action="/index.php" method="post">
+                    <input type="submit" value="kiosk-wifi-QR">
+                    <input type="submit" value="kiosk-form">
+                </form> 
+                
+                ';
+
         
-    case 'kiosk-form':
-        echo "UI kiosk checkin or out";
-        //show form for check in or out, 2 buttons (in/out)
+        echo $htmlfooter;
     
         break;
         
@@ -35,7 +38,14 @@ switch ($_POST['ui']) {
         echo "UI kiosk checkout";
         //show QR code for kiosk WiFi
     
+        break;        
+        
+    case 'kiosk-form':
+        echo "UI kiosk checkin or out";
+        //show form for check in or out, 2 buttons (in/out)
+    
         break;
+
         
     case 'mobile-home':
         echo "UI mobile home";
