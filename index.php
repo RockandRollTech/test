@@ -36,6 +36,7 @@ switch ($_POST['ui']) {
         break;
         
     case 'kiosk-wifi-QR':
+        echo $htmlheader;
         echo "UI kiosk WiFi";
         echo '<main>
               <div id="qrcode"></div>
@@ -51,7 +52,7 @@ switch ($_POST['ui']) {
                 </form> 
                 
                 ';
-
+        echo $htmlfooter;
     
         break;        
         
