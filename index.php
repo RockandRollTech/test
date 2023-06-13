@@ -9,6 +9,8 @@ switch ($_GET['p']) {
         echo '
         
         <div id="qrContainer"></div>
+
+        <script>
         var qrContainer = document.createElement("div");
         document.body.appendChild(qrContainer);
         
@@ -42,14 +44,14 @@ switch ($_GET['p']) {
             .catch(function(error) {
               console.error(error);
             });
-        }
+            }
 
-        // Call the function initially
-        fetchAndDisplayQRCode();
-        
-        // Fetch and display the QR code every 10 seconds
-        setInterval(fetchAndDisplayQRCode, 10000);
-        
+            // Call the function initially
+            fetchAndDisplayQRCode();
+            
+            // Fetch and display the QR code every 10 seconds
+            setInterval(fetchAndDisplayQRCode, 10000);
+            </script>
         ';
 
         //print_r($_POST);
