@@ -33,9 +33,9 @@ switch ($_GET['p']) {
         
               // Create a new QR code instance
               var qrcode = new QRCode(qrContainer, {
-                text: qrdata,
-                width: 128,
-                height: 128,
+                text: "https://signin.beep3.com?p=form&secret="+qrdata,
+                width: 256,
+                height: 256,
               });
         
               // Display the QR code
