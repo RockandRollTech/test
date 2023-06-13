@@ -5,7 +5,7 @@ include 'vars.php';
 switch ($_POST['ui']) {
     default: //Kiosk Home - show QR code + button for checkin/checkout without mobile + button for "I don't have reception here"
         echo $htmlheader;
-        echo "Kiosk Home<br>";
+        //echo "Kiosk Home<br>";
         echo '<main>
               <div id="qrcode"></div>
               </main>
@@ -29,7 +29,7 @@ switch ($_POST['ui']) {
                 
                 ';
 
-        print_r($_POST);
+        //print_r($_POST);
         
         echo $htmlfooter;
     
@@ -37,7 +37,7 @@ switch ($_POST['ui']) {
         
     case 'kiosk-wifi-QR':
         echo $htmlheader;
-        echo "UI kiosk WiFi";
+        echo "Scan to connect to WiFi";
         echo '<main>
               <div id="qrcode"></div>
               </main>
@@ -63,8 +63,14 @@ switch ($_POST['ui']) {
         break;
 
         
-    case 'mobile-home':
+    case 'form':
         echo "UI mobile home";
+        
+        echo '                <form action="/index.php" method="post">
+                    <button type="submit" name="ui" value="arrive">Arriving</button>
+                    <button type="submit" name="ui" value="leave">Leaving</button>
+                </form>';
+        
         $myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
         $txt = "Donald Duck\n";
         fwrite($myfile, $txt);
