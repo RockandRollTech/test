@@ -9,54 +9,48 @@ switch ($_GET['p']) {
         echo '
         
         <div id="qrContainer"></div>
+        var qrContainer = document.createElement("div");
+        document.body.appendChild(qrContainer);
         
-        // Create a container element to display the QR code
-var qrContainer = document.createElement("div");
-document.body.appendChild(qrContainer);
-
-// Function to fetch the string and generate the QR code
-function fetchAndDisplayQRCode() {
-  // Make an HTTP request to fetch the string
-  fetch("https://signin.beep3.com?p=secret")
-    .then(function(response) {
-      // Check if the request was successful
-      if (response.ok) {
-        // Extract the string from the response
-        return response.text();
-      } else {
-        throw new Error("HTTP request failed");
-      }
-    })
-    .then(function(data) {
-      // Clear the previous QR code if any
-      qrContainer.innerHTML = "";
-
-      // Create a new QR code instance
-      var qrcode = new QRCode(qrContainer, {
-        text: data,
-        width: 128,
-        height: 128,
-      });
-
-      // Display the QR code
-      qrContainer.style.display = "block";
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
-}
-
-// Call the function initially
-fetchAndDisplayQRCode();
-
-// Fetch and display the QR code every 10 seconds
-setInterval(fetchAndDisplayQRCode, 10000);
+        // Function to fetch the string and generate the QR code
+        function fetchAndDisplayQRCode() {
+          // Make an HTTP request to fetch the string
+          fetch("https://signin.beep3.com?p=secret")
+            .then(function(response) {
+              // Check if the request was successful
+              if (response.ok) {
+                // Extract the string from the response
+                return response.text();
+              } else {
+                throw new Error("HTTP request failed");
+              }
+            })
+            .then(function(qrdata) {
+              // Clear the previous QR code if any
+              qrContainer.innerHTML = "";
         
+              // Create a new QR code instance
+              var qrcode = new QRCode(qrContainer, {
+                text: qrdata,
+                width: 128,
+                height: 128,
+              });
         
-        
+              // Display the QR code
+              qrContainer.style.display = "block";
+            })
+            .catch(function(error) {
+              console.error(error);
+            });
+        }
 
-                
-                ';
+        // Call the function initially
+        fetchAndDisplayQRCode();
+        
+        // Fetch and display the QR code every 10 seconds
+        setInterval(fetchAndDisplayQRCode, 10000);
+        
+        ';
 
         //print_r($_POST);
         
