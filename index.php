@@ -2,30 +2,59 @@
 
 include 'vars.php';
 
-switch ($_POST['ui']) {
+switch ($_GET['p']) {
     default: //Kiosk Home - show QR code + button for checkin/checkout without mobile + button for "I don't have reception here"
         echo $htmlheader;
         //echo "Kiosk Home<br>";
-        echo '<main>
-              <div id="qrcode"></div>
-              </main>
-     
-                <script>
-                  var QRText = "https://signin.beep3.com?secret=wait";
-                  var qrcode = new QRCode("qrcode",QRText);
-                  var secret = 0
-                  var mainLoopId = setInterval(function(){
-                    secret = secret + 1
-                    QRText = "https://signin.beep3.com?secret=" + secret.toString();
-                    document.getElementById("qrcode").innerHTML = "";
-                    qrcode = new QRCode("qrcode",QRText);
-                    }, 10000);
-                </script>
-                
-                <form action="/index.php" method="post">
-                    <button type="submit" name="ui" value="kiosk-wifi-QR">I have no phone reception</button>
-                    <button type="submit" name="ui" value="kiosk-form">I have no mobile device</button>
-                </form> 
+        echo '
+        
+        <div id="qrContainer"></div>
+        
+        // Create a container element to display the QR code
+var qrContainer = document.createElement("div");
+document.body.appendChild(qrContainer);
+
+// Function to fetch the string and generate the QR code
+function fetchAndDisplayQRCode() {
+  // Make an HTTP request to fetch the string
+  fetch("https://signin.beep3.com?p=secret")
+    .then(function(response) {
+      // Check if the request was successful
+      if (response.ok) {
+        // Extract the string from the response
+        return response.text();
+      } else {
+        throw new Error("HTTP request failed");
+      }
+    })
+    .then(function(data) {
+      // Clear the previous QR code if any
+      qrContainer.innerHTML = "";
+
+      // Create a new QR code instance
+      var qrcode = new QRCode(qrContainer, {
+        text: data,
+        width: 128,
+        height: 128,
+      });
+
+      // Display the QR code
+      qrContainer.style.display = "block";
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+}
+
+// Call the function initially
+fetchAndDisplayQRCode();
+
+// Fetch and display the QR code every 10 seconds
+setInterval(fetchAndDisplayQRCode, 10000);
+        
+        
+        
+
                 
                 ';
 
@@ -35,26 +64,32 @@ switch ($_POST['ui']) {
     
         break;
         
-    case 'kiosk-wifi-QR':
-        echo $htmlheader;
-        echo "Scan to connect to WiFi";
-        echo '<main>
-              <div id="qrcode"></div>
-              </main>
-     
-                <script>
-                  var QRText = "WIFI:T:WPA;S:MyNetworkName;P:ThisIsMyPassword;H;";
-                  var qrcode = new QRCode("qrcode",QRText);
-                </script>
-                
-                <form action="/index.php" method="post">
-                    <input name="ui" type="submit" value="Back">
-                </form> 
-                
-                ';
-        echo $htmlfooter;
-    
-        break;        
+        case 'secret':
+            echo "test1234";
+
+        
+            break;
+            
+        case 'kiosk-wifi-QR':
+            echo $htmlheader;
+            echo "Scan to connect to WiFi";
+            echo '<main>
+                    <div id="qrcode"></div>
+                    </main>
+            
+                    <script>
+                        var QRText = "WIFI:T:WPA;S:MyNetworkName;P:ThisIsMyPassword;H;";
+                        var qrcode = new QRCode("qrcode",QRText);
+                    </script>
+                    
+                    <form action="/index.php" method="post">
+                        <input name="ui" type="submit" value="Back">
+                    </form> 
+                    
+                    ';
+            echo $htmlfooter;
+        
+            break;        
         
     case 'kiosk-form':
         echo "UI kiosk checkin or out";
