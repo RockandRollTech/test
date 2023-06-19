@@ -74,7 +74,7 @@ switch ($_GET['p']) {
                     </main>
             
                     <script>
-                        var QRText = "WIFI:T:WPA;S:MyNetworkName;P:ThisIsMyPassword;H;";
+                        var QRText = "WIFI:T:WPA;S:signin.beep3.com-kiosk-57AF;P:46E9HTCA$Pr3fXan;";
                         var qrcode = new QRCode("qrcode",QRText);
                     </script>
                     
