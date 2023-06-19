@@ -52,47 +52,37 @@ switch ($_GET['p']) {
             // Fetch and display the QR code every 10 seconds
             setInterval(fetchAndDisplayQRCode, 10000);
             </script>
+
+            <a href="index.php?p=kiosk-wifi-QR">GIVE ME WIFI</a>&nbsp;<a href="index.php?p=form">I HAVE NO PHONE</a>
         ';
 
-        //print_r($_POST);
-        
         echo $htmlfooter;
     
         break;
         
-        case 'secret':
-            echo "test1234";
+    case 'secret':
+        echo "test1234";
 
         
-            break;
-            
-        case 'kiosk-wifi-QR':
-            echo $htmlheader;
-            echo "Scan to connect to WiFi";
-            echo '<main>
-                    <div id="qrcode"></div>
-                    </main>
-            
-                    <script>
-                        var QRText = "WIFI:T:WPA;S:signin.beep3.com-kiosk-57AF;P:46E9HTCA$Pr3fXan;";
-                        var qrcode = new QRCode("qrcode",QRText);
-                    </script>
-                    
-                    <form action="/index.php" method="post">
-                        <input name="ui" type="submit" value="Back">
-                    </form> 
-                    
-                    ';
-            echo $htmlfooter;
-        
-            break;        
-        
-    case 'kiosk-form':
-        echo "UI kiosk checkin or out";
-        //show form for check in or out, 2 buttons (in/out)
-    
         break;
-
+            
+    case 'kiosk-wifi-QR':
+        echo $htmlheader;
+        echo "Scan to connect to WiFi";
+        echo '<main>
+                <div id="qrcode"></div>
+                </main>
+        
+                <script>
+                    var QRText = "WIFI:T:WPA;S:signin.beep3.com-kiosk-57AF;P:46E9HTCA$Pr3fXan;";
+                    var qrcode = new QRCode("qrcode",QRText);
+                </script>
+                
+                <a href="index.php">BACK</a>
+                ';
+        echo $htmlfooter;
+    
+        break;        
         
     case 'form':
         echo "UI mobile home";
